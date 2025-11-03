@@ -4,12 +4,12 @@ const port = process.env.PORT || 3000;
 const redirectUrl = process.env.REDIRECT_URL || 'https://sharesimple.de/api/download.php?id=';
 const errorURL = process.env.ERROR_URL || 'https://sharesimple.de/';
 
-// URLS can be either /:id or /:id/:pass
-app.get('/:id/:pass?', (req, res) => {
+// URLS can be either /:id or /:id/:code
+app.get('/:id/:code?', (req, res) => {
     const id = req.params.id;
-    const pass = req.params.pass;
-    if (pass) {
-        res.redirect(`${redirectUrl}${id}&pass=${pass}`);
+    const code = req.params.code;
+    if (code) {
+        res.redirect(`${redirectUrl}${id}&code=${code}`);
     } else {
         res.redirect(`${redirectUrl}${id}`);
     }
